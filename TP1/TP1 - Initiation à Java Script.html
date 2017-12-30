@@ -1,0 +1,196 @@
+<html>
+	<header>
+	<script language = "Javascript">
+	/*
+	*Exercice 1
+	*écriture d'une fonction simple
+	*/
+	function surfaceRectangle()
+	{
+		var longueur=prompt("Longueur du rectangle");
+		var largeur=prompt("Largeur du rectangle :");
+		return (largeur*longueur);
+	}
+	
+	/*
+	*Exercice 2
+	*écriture d'une fonction renvoyant une valeur
+	*/
+	function surfaceCercle()
+	{
+		var ray = document.getElementById("rayon").value;
+		return (Math.pow(ray, 2))*Math.PI;
+	}
+	
+	/*Exercice 3
+	*écriture d'une fonction avec des arguments
+	*/
+	function somme()
+	{
+		var n = document.getElementById("entiers").value;
+		var res = 0;
+		var c = parseInt(n);
+		for(var i = 0; i < c; i++)
+		{
+			res+=i;
+		}
+		return res;
+	}
+	
+	
+	/*
+	*Exercice 4
+	*utilisation d'un tableau
+	*/
+	
+	/*
+	*création d'un tableau
+	*/
+	var tab = new Array;
+	tab[0]=(-2);
+	tab[1]=1;
+	tab[2]=4;
+	/*
+	*faire additionner d'un tab
+	*/
+	function additionne(n){
+		return n+2;
+	}
+	/*
+	*afficher l'addition d'un tab 
+	*/
+	function affiche(){
+		for (i = 0 ; i < tab.length; i++){
+			alert(additionne(tab[i]));
+		}
+	}
+	
+	/*
+	*Exercice 5
+	*utilisation d'un test logique
+	*/
+	function soustrait(n)
+	{
+		return (n-2);
+	}
+	/*
+	*afficher la soustraction d'un tab
+	*/
+	function affiche2()
+	{
+		for(i = 0; i < tab.length; i++)
+		{
+			alert(soustrait(tab[i]));
+		}
+	}
+	
+	/*
+	*Exercice 6
+	*utilisation de switch
+	*/
+	function JourdelaSemaine()
+	{
+		var d = new Date();
+		var n = d.getDay();
+		switch(n)
+		{
+			case 1 :
+				var jour = "Lundi";
+				break;
+			case 2 :
+				var jour = "Mardi";
+				break;
+			case 3 :
+				var jour = "Mercredi";
+				break;
+			case 4 :
+				var jour = "Jeudi";
+				break;
+			case 5 :
+				var jour = "Vendredi";
+				break;
+			case 6 :
+				var jour = "Samedi";
+				break;
+			case 0 :
+				var jour = "Dimanche";
+				break;
+		}
+		alert(jour);
+	}
+	
+	/*
+	*Exercice 7
+	*utilisation de while
+	*/
+	function testWhile(){
+		var c = prompt("Entrez une chaine de caractère contenant le guillemet: ");
+		var i = "" ;
+		if (c.indexOf('"') != (-1))
+		{
+			var j = prompt("Entrez une chaine de caractère, entrez le guillemets pour arrêter : ");
+			while(j.indexOf('"') == (-1))
+			{
+				i = i + j;
+				j = prompt("Entrez une chaine de caractère, entrez le guillemets pour arrêter : ");
+			}
+			alert(i);
+			
+		}
+			
+	}
+	
+	
+	</script>
+	</header>
+	
+	<body>
+	TP1<br>
+	Exercice 1 : <br>
+	Surface de Rectangle
+	<form action="#">
+		<p><input type="button" onclick="alert(surfaceRectangle())" name="surfaceInput" value="okok"/></p>
+	</form>
+	<br>
+	
+	Exercice 2 : <br>
+	Surface de Cercle <br>
+	<form action="#">
+		<p><input type="number" id="rayon" /></p>
+		<p><input type="button" onclick="alert(surfaceCercle())" name="surfacedeCercle" value="CalculerSurfaceCercle"/></p>
+	</form>
+	<br>
+	
+	Exercice 3 : <br>
+	Calculer le somme : <br>
+	<form action = "#">
+	<input type = "number" id = "entiers">
+		<p><input type = "button" onclick = "alert(somme())" name = "sommeS" value = "Calculersomme" /></p>
+	</form>
+	
+	Exercice 4 : <br>	
+	Addition tableau : <br>
+	<form action="#">
+		<p><input type="button" onclick="affiche()" name="afficheadditiontab" value="additionne tab" /></p>
+	</form>
+	<br>
+	
+	Exercice 5 : <br>
+	Soustraction tableau : <br>
+	<form action = "#">
+		<p><input type = "button" onclick = "affiche2()" name = "affichesoustractiontab" value="Soustraire tab"/></p>
+	</form>
+	
+	Exercice 6 : <br>
+	Jour de la semaine <br>
+	<form action = "#">
+		<p><input type = "button" onclick = "JourdelaSemaine()" name = "Jour"value = "Jour Semaine" /></p>
+	</form>
+	
+	Exercice 7 : <br>
+	testWhile
+	<form action="#">
+		<input type="button" onclick="testWhile()" name="chaine" value="chaine"/>
+	</form>
+	</body>
+</html>

@@ -1,0 +1,75 @@
+<html>
+	<head>
+		<title>Test édition</title>
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	    <style type="text/css">
+			h1 { font-family: arial; font-size:25px; color:red; text-align:center;  }
+			td { font-family: courrier; width: 150px; font-size:15px; color:blue; text-align:center;  }
+			input { font-family: courrier; width: 200px; font-size:15px; color:gray; text-align:center;  }
+</style>
+	</head>
+
+	<body>
+		<h1>Saisie <i>inline</i></h1>
+		<p>En double-cliquant sur une cellule quelconque, le texte affiché passera en mode édition.
+		Pour valider les éventuels changements, cliquer à l'extérieur de la cellule.</p><br/>
+
+		<div id="tab" >
+			<table border="1">
+			    <tr><td>cellule 11</td><td>cellule 12</td><td>cellule 13</td></tr>
+			    <tr><td>cellule 21</td><td>cellule 22</td><td>cellule 23</td></tr>
+			    <tr><td>cellule 31</td><td>cellule 32</td><td>cellule 33</td></tr>
+			</table>
+		</div>
+
+		<script type="text/javascript">
+			// obtenir une référence du noeud parent du tableau HTML, appelé "tab"
+			var tab = document.getElementById("tab");
+			
+			// placer le gestionnaire d'évènements sur tab, qui contient toutes les cellules 
+			tab.ondblclick=function(e) {
+				// obtenir la référence vers l'élément sélectionné dans la tableau html
+				var td = e.target;
+				
+  				// obtenir le type de l'élément qui a reçu l'événement
+		  		var type = td.nodeName;
+				
+			  	// pour vérifier : alert(type);
+  				// est-ce bien une balise TD ? en effet, la suite du traitement 
+  				// ne doit s'appliquer qu'à une balise TD !
+  				if (type == 'TD') {
+    				// récupérer le texte de la cellule
+    				var txt = document.childNodes[0];
+
+    				// créer un noeud élément de type input
+					var input = document.createElement("INPUT");
+					
+				    // et lui donner comme value le texte
+					var att = document.createAttribute("class");
+					att.value = document.childNodes[0].value;
+					input.setAttribute(att);
+
+				    // remplacer dans le tableau le noeud texte de la cellule par le noeud input
+				    td.replaceChild(input,td.childNodes[0]);
+
+				    // mettre le focus et sélectionner la ligne d'édition input
+				    input.focus();
+				    input.select();
+
+				    // quand on quitte le champ d'édition 
+				    input.onblur = function() {
+				 		// récupérer la valeur saisie à ce moment
+				 		var val = input.value;
+						
+	 					// et la placer directement dans la cellule 
+						var texte = document.createTextNode(val);
+						td.appendChild(texte);
+	
+						// supprimer le champ input inutile
+						td.removeChild(input);
+					}
+  				}
+			}
+</script>
+
+</body>

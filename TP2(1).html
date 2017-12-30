@@ -1,0 +1,65 @@
+<html>
+	<header>
+	<script language="Javascript">
+	
+	//if(document.getElementById('remplir').value.length==0)
+	var v = Math.floor((Math.random() * 1024) + 1);
+	function nbAleatoire()
+	{
+		var n = document.getElementById("nb").value;
+		if ((is_numeric(n)==true) && (n!='')){
+			var c = parseInt(n);
+			if(c == v){
+				document.getElementById('indication').innerHTML='BINGO';
+			}else{
+				if ( c < v)
+				{
+					document.getElementById('indication').innerHTML='plus grand';
+				}else{
+					document.getElementById('indication').innerHTML='plus petit';
+				}
+			}
+		}else{
+			alert("cette chaine de caracteres n'est pas composee que de chiffres");
+		}
+	}
+	
+	function is_numeric(chaine) {
+		var exp=new RegExp("^[0-9]*$","g");
+		return exp.test(chaine);
+	}
+	</script>
+	</header>
+	<body>
+	<p>
+<span id='couleur' 
+onClick="this.style.color = 'yellow'"
+onMouseover="this.style.color = 'red'"
+onDblClick="this.style.color = 'green'"
+> 
+JE SUIS  TON PERE</span></p>
+	
+<form action="" method="post" name="myform">
+	<input type="text" id="remplir" name="valide"/>
+	<input type="button"  value="ok" onClick="
+	if (document.forms['myform'].elements['valide'].value =='')
+	{
+	document.getElementById('message').innerHTML='formulaire vide !';
+	}else{
+	document.forms['myform'].submit();
+	}"/>
+
+	<br>
+<span id='message'></span>	
+	
+	
+</form>
+
+<form action="#" onSubmit="nbAleatoire()">
+	<span id="indication"></span><br>
+	<input type="text" id="nb" />
+	<p><input type="submit" name="nbEss" value="ok"/></p>
+</form>
+	
+	</body>
+</html>
